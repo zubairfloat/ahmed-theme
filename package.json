@@ -5,6 +5,7 @@
     "@material-ui/core": "latest",
     "bootstrap": "^4.6.0",
     "next": "latest",
+    "nprogress": "^0.2.0",
     "prop-types": "latest",
     "react": "latest",
     "react-bootstrap": "^1.5.1",

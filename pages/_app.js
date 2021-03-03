@@ -1,38 +1,35 @@
 import React from 'react'
-import App from 'next/app'
-import Head from 'next/head'
-import { ThemeProvider } from '@material-ui/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '../src/theme'
-import Navbar from '../components/Navbar'
+import App, { Container } from 'next/app'
+import Router from 'next/router'
+import NProgress from 'nprogress'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 import './index.css'
 
-class MyApp extends App {
-  componentDidMount() {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles)
+export default class AppWrapper extends App {
+  // ENV: SSR
+  static async getInitialProps({ Component, router, ctx }) {
+    let pageProps = {}
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx)
+    }
+    return { pageProps }
+  }
+
+  componentWillMount() {
+    if (Router && NProgress) {
+      Router.onRouteChangeStart = () => NProgress.start()
+      Router.onRouteChangeComplete = () => NProgress.done()
+      Router.onRouteChangeError = () => NProgress.done()
     }
   }
 
   render() {
     const { Component, pageProps } = this.props
-
     return (
-      <>
-        <Navbar>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Navbar>
-      </>
+      <Container>
+        <Component {...pageProps} />{' '}
+      </Container>
     )
   }
 }
-
-export default MyApp
