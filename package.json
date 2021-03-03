@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "dependencies": {
     "@material-ui/core": "latest",
+    "bootstrap": "^4.6.0",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
+    "react-bootstrap": "^1.5.1",
     "react-dom": "latest",
     "styled-components": "latest"
   },
