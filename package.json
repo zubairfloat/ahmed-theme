@@ -4,13 +4,15 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "bootstrap": "^4.6.0",
+    "formik": "^2.2.6",
     "next": "latest",
     "nprogress": "^0.2.0",
     "prop-types": "latest",
     "react": "latest",
     "react-bootstrap": "^1.5.1",
     "react-dom": "latest",
-    "styled-components": "latest"
+    "styled-components": "latest",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "latest"
